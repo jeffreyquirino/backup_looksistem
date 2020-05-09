@@ -26,7 +26,7 @@
               <a href="{% url 'index'%}">Início</a>
             </li>
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="{% url 'products'%}" id="download">Categorias <span class="caret"></span></a>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="{% url 'catalog:products'%}" id="download">Categorias <span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="download">
                 {% for category in categories %} <!-- enquanto category na viariavel "categories", a mesma esta na core/views.py-->
                 <li><a href="#">{{ category }}</a></li> <!-- Assim ele chama o STR do model, e o mesmo responde por nome-->
@@ -51,7 +51,7 @@
 			    <ul class="list-unstyled">
 			      <li class="pull-right"><a href="#top">Voltar ao Topo</a></li>
 			      <li><a href="{% url 'index'%}">Início</a></li>
-			      <li><a href="{% url 'products'%}">Produtos</a></li>
+			      <li><a href="{% url 'catalog:products'%}">Produtos</a></li>
 			      <li><a href="{% url 'contact'%}">Fale Conosco</a></li>
 			      <li><a href="">Termos e Privacidade</a></li>
 			    </ul>
