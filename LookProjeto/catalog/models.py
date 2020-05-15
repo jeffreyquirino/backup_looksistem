@@ -1,6 +1,7 @@
 # coding=utf-8
 
 from django.db import models
+from django.core.urlresolvers import reverse
 
 class Category(models.Model): #modelo que representa uma tabela no banco de dados
     
@@ -17,6 +18,10 @@ class Category(models.Model): #modelo que representa uma tabela no banco de dado
 
     def __str__(self): #representação em string de um objeto
         return self.name
+    
+    def get_absolute_url(self):
+        return reverse('catalog:category', kwargs={'slug': self.slug}) #kwargs parametros nomeados, essa função é um padrao para utilizar url 
+
 
 
 class Product(models.Model): #classe do produto
@@ -37,6 +42,10 @@ class Product(models.Model): #classe do produto
 
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        return reverse('catalog:product', kwargs={'slug': self.slug}) #kwargs parametros nomeados, essa função é um padrao para utilizar url 
+
 
 
     

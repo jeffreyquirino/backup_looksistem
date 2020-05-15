@@ -9,8 +9,7 @@ def index(request):
 def contact(request):
     return render(request, 'contact.html')
 
-def product(request):
-    return render(request, 'product.html')
+
 
 
 

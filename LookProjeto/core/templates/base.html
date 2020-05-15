@@ -29,7 +29,7 @@
               <a class="dropdown-toggle" data-toggle="dropdown" href="{% url 'catalog:products'%}" id="download">Categorias <span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="download">
                 {% for category in categories %} <!-- enquanto category na viariavel "categories", a mesma esta na core/views.py-->
-                <li><a href="#">{{ category }}</a></li> <!-- Assim ele chama o STR do model, e o mesmo responde por nome-->
+                <li><a href = " {{category.get_absolute_url}} " >{{ category }}</a></li> <!-- Assim ele chama o STR do model, e o mesmo responde por nome-->
                 {% endfor %}
               </ul>
             </li>
