@@ -11,4 +11,6 @@ DATABASES = {
     }
 }
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' #ele pega todo conteudo enviado ao email e joga no terminal
+
 #Arquivo que sobrescreve algumas configurações de produção olhe a linha 123 do aqruivo settings.py 

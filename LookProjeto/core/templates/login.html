@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% load widget_tweaks %} <!-- biblioteca que costumiza a costumização dos campos -->
+
+{% block title %}Entrar | {{ block.super }}{% endblock %} <!--conteudo q tem no bloco-->
+
+{% block container %}
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="page-header">
+            <h1>Entrar</h1>
+        </div>
+        <form class="form-horizontal" method="post">
+            {% csrf_token %} <!-- redenriza o token para cada requisão do formulario  -->
+            {% for error in form.non_field_errors %} <!--erros genericos, são erros que não sao atrelados a um campo espesifico-->
+            <div class="alert alert-danger">
+                {{ error }} <!-- aqui ele retorna o erro-->
+            </div>
+            {% endfor %}
+            <fieldset>
+                <div class="form-group{% if form.username.errors %} has-error{% endif %}"> <!-- has error = se existe erro ele deixa vermhelho na visualização-->
+                  <label for="{{ form.username.auto_id }}" class="col-md-3 control-label">{{ form.username.label }}</label> <!-- esse form é um form do django-->
+                  <div class="col-md-9">
+                    {% render_field form.username class="form-control" %} <!-- formulario do login, render fild é uma template tag da aplicação-->
+                    {% for error in form.username.errors %} 
+                    <span class="help-block">{{ error }}</span>
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class="form-group{% if form.password.errors %} has-error{% endif %}">
+                  <label for="{{ form.password.auto_id }}" class="col-md-3 control-label">{{ form.password.label }}</label>
+                  <div class="col-md-9">
+                    {% render_field form.password class="form-control" %}  <!--formaulario da senha-->
+                    {% for error in form.password.errors %}
+                    <span class="help-block">{{ error }}</span>
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-9 col-md-offset-3">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                  </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+{% endblock %}

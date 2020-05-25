@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    #libs
+    'widget_tweaks',
+    #apps
     'core',
     'catalog',
 ]
@@ -63,7 +65,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
+                'django.contrib.auth.context_processors.auth', #contexo que adiciona o user em todos templates
                 'django.contrib.messages.context_processors.messages',
                 #abaixo é o contexto criado em catalog/context_processors.py
                 'catalog.context_processors.categories',
@@ -123,6 +125,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# E-mail
+EMAIL_HOST = '' #onde fica o linkdo email se smtp
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+DEFAULT_FROM_EMAIL = 'admin@djangoecommerce.com'
+
+# auth
+LOGIN_URL = 'login' #nome da URL
+LOGIN_REDIRECT_URL = 'index' 
+#LOGOUT_URL = 'logout'
+#AUTH_USER_MODEL = 'accounts.User'
+#AUTHENTICATION_BACKENDS = (
+#    'django.contrib.auth.backends.ModelBackend',
+#    'accounts.backends.ModelBackend',
+#)
 
 try:
     from .local_settings import *
