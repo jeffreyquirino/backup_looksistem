@@ -1,10 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.core.mail import send_mail
+from django.contrib.auth.forms import UserCreationForm #formalario do proprio django de register
 from django.conf import settings  #importando configuração do settings 
-from django.views.generic import View, TemplateView #template_name
+from django.core.urlresolvers import reverse_lazy #importando reverse_lazy ele busca o valor quando necessario (URL)
+from django.views.generic import View, TemplateView, CreateView #template_name #CreateView
+from django.contrib.auth import get_user_model #essa funcao resgata o modelo de usuario
 
 from .forms import ContactForm
+
+User = get_user_model() 
 
 class IndexView(TemplateView):
 
@@ -26,7 +31,17 @@ def contact(request):
     return render(request, 'contact.html', context)
 
 
+# Logica de registro de usuario sem a aplicação accounts
+#class RegisterView(CreateView): #o Create View dentro do template q ele e usa cria uma variavel chamada form com o formulario atual, ele processa o post
 
+#    form_class = UserCreationForm
+#    template_name = 'register.html'
+#    model = User
+#    success_url = reverse_lazy('index') 
+
+#register = RegisterView.as_view() #transformou a classe em um objeto chamavel dentro da viriavel register
+
+#ele renderiza um template com este usuariio
 
 
 

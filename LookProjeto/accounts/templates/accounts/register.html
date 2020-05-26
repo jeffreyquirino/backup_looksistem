@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% load widget_tweaks %} <!-- biblioteca que costumiza a costumização dos campos -->
+
+{% block title %}Registro | {{ block.super }}{% endblock %} <!--conteudo q tem no bloco-->
+
+{% block container %}
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="page-header">
+            <h1>Registro</h1>
+        </div>
+        <form class="form-horizontal" method="post">
+            {% csrf_token %} <!-- redenriza o token para cada requisão do formulario  -->
+            {% for error in form.non_field_errors %} <!--erros genericos, são erros que não sao atrelados a um campo espesifico-->
+            <div class="alert alert-danger">
+                {{ error }} <!-- aqui ele retorna o erro-->
+            </div>
+            {% endfor %}
+            <fieldset>
+                {% for field in form %} <!-- para cada CAMPO em formulario-->
+                <div class="form-group{% if field.errors %} has-error{% endif %}"> <!-- has error = se existe erro ele deixa vermelho na visualização-->
+                  <label for="{{ field.auto_id }}" class="col-md-3 control-label">{{ field.label }}</label> <!-- esse form é um form do django-->
+                  <div class="col-md-9">
+                    {% render_field field class="form-control" %} <!-- formulario do login, render fild é uma template tag da aplicação-->
+                    {% for error in field.errors %} 
+                    <span class="help-block">{{ error }}</span>
+                    {% endfor %}
+                  </div>
+                </div>
+                {% endfor %}
+                <div class="form-group">
+                  <div class="col-md-9 col-md-offset-3">
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                  </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+{% endblock %}

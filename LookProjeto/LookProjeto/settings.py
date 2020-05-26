@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     #apps
     'core',
+    'accounts',
     'catalog',
 ]
 
@@ -103,7 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    }, #AUTH_PASSWORD_VALIDATORS é basicamente um validador de senhas do proprio django
 ]
 
 
@@ -135,12 +136,12 @@ DEFAULT_FROM_EMAIL = 'admin@djangoecommerce.com'
 # auth
 LOGIN_URL = 'login' #nome da URL
 LOGIN_REDIRECT_URL = 'index' 
-#LOGOUT_URL = 'logout'
-#AUTH_USER_MODEL = 'accounts.User'
-#AUTHENTICATION_BACKENDS = (
-#    'django.contrib.auth.backends.ModelBackend',
-#    'accounts.backends.ModelBackend',
-#)
+LOGOUT_URL = 'logout'
+AUTH_USER_MODEL = 'accounts.User' 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.ModelBackend',
+) #carrega quais backends voce irá usar
 
 try:
     from .local_settings import *

@@ -26,7 +26,9 @@ urlpatterns = [
     url(r'^contato/$', views.contact, name='contact'),
     url(r'^entrar/$', login, {'template_name': 'login.html'}, name='login'),
     url(r'^sair/$', logout, {'next_page': 'index'}, name='logout'),
+    #url(r'^registro/$', views.register, name='register'), o mesmo so era utiizado quando não havia a aplicação accounts
     url(r'^catalogo/', include('catalog.urls', namespace='catalog')), #ele indica aonde estão definidas as urls, o namespace meio q define um pefixo do template
+    url(r'^conta/', include('accounts.urls', namespace='accounts')), #tudo que começar com conta quem vai definir a URL é as urls do accounts
     url(r'^admin/', admin.site.urls),
 ]
 
