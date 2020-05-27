@@ -6,6 +6,7 @@ from django.conf import settings  #importando configuração do settings
 from django.core.urlresolvers import reverse_lazy #importando reverse_lazy ele busca o valor quando necessario (URL)
 from django.views.generic import View, TemplateView, CreateView #template_name #CreateView
 from django.contrib.auth import get_user_model #essa funcao resgata o modelo de usuario
+from django.contrib import messages #funcao que tras as menssagens
 
 from .forms import ContactForm
 
@@ -24,6 +25,8 @@ def contact(request):
     if form.is_valid():
         form.send_mail() #essa funcao esta no core/forms.py
         success = True
+    elif request.method == 'POST':
+        messages.error(request, 'Formulário inválido') #quando nao carregar a apgina será exibido esse texto
     context = {
         'form': form,
         'success': success
