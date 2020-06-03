@@ -1,0 +1,30 @@
+{% extends "accounts/index.html" %}
+
+{% block title %}
+Pedido #{{ order.pk }}
+{% endblock %}
+
+{% block accounts_container %}
+<h2>Pedido #{{ order.pk }}</h2>
+<dl class="dl-horizontal"> <!--class de definição, -->
+    <dt>Total R$</dt>
+    <dd>{{ object.total|floatformat:"2" }}</dd> <!-- esse total -->
+    <dt>Situação</dt>
+    <dd>{{ object.get_status_display }}</dd> <!--todo calor q contem choices na models pode ser chamado assim, com o valor de visulisação ao usuario-->
+    <dt>Data</dt>
+    <dd>{{ object.created|date:"d/m/Y H:i" }}</dd> 
+    <dt>Meio de Pagamento</dt>
+    <dd>{{ object.get_payment_option_display }}</dd>
+</dl>
+<h3>Itens do Pedido</h3>
+{% for item in object.items.all %}
+    <dl class="dl-horizontal">
+        <dt>Produto</dt>
+        <dd>{{ item.product }}</dd>
+        <dt>Quantidade</dt>
+        <dd>{{ item.quantity }}</dd>
+        <dt>Preço</dt>
+        <dd>R$ {{ item.price|floatformat:"2" }}</dd>
+    </dl>
+{% endfor %}
+{% endblock %}

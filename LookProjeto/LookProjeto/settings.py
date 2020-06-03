@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #libs
     'widget_tweaks',
+    'paypal.standard.ipn',
     #apps
     'core',
     'accounts',
@@ -48,10 +49,12 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    #'whitenoise.middleware.WhiteNoiseMiddleware', #WhiteNoise permite que seu aplicativo da Web sirva seus próprios arquivos estáticos, tornando-o uma unidade independente que pode ser implantada em qualquer lugar sem depender de qualquer outro serviço externo. (Especialmente útil no Heroku)
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
@@ -155,6 +158,13 @@ MESSAGE_TAGS = {
     messages_constants.WARNING: 'warning',
     messages_constants.ERROR: 'danger',
 } #Massage_tags é um dicionario com essas constantes, quando da erro la ele vai pro comportamento de ERROR e assim vai.
+
+PAGSEGURO_TOKEN = '70095D211D944F568333595CE82BD27D' #TOKEN para acessar a api 
+PAGSEGURO_EMAIL = 'jeffreydanff14@gmail.com'
+PAGSEGURO_SANDBOX = True #True é para teste, False para uso real, variavel criada na views
+
+PAYPAL_TEST = True #se for igual a true ele considera que voce esta em um abiante de sandbox(teste)
+PAYPAL_EMAIL = 'sb-cvk8e1942040@personal.example.com'
 
 try:
     from .local_settings import *

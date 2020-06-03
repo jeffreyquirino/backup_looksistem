@@ -1,0 +1,50 @@
+{% extends "accounts/index.html" %} <!--extende de update_user-->
+
+{% load pagination %}
+
+{% block title %}
+Meus Pedidos
+{% endblock %}
+
+{% block accounts_container %}
+<h2>Meus Pedidos</h2>
+<table class="table table-bordered"> 
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Produtos
+            </th>
+            <th>
+                Situação
+            </th>
+            <th>
+                Data
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in object_list %} <!--object_list tem todos os objetos de order(pedidos)-->
+        <tr>
+            <td>
+                <a href="{% url 'checkout:order_detail' order.pk %}">#{{ order.pk }}</a> <!--link para pedido-->
+            </td>
+            <td>
+                {% for product in order.products %} <!--produtos no pedido-->
+                {{ product.name }}{% if not forloop.last %}<br />{% endif %} <!--forloop é uma variavel extra, mostra a posição que o for esta-->
+                {% endfor %}
+            </td>
+            <td>
+                {{ order.get_status_display }} <!--garante que o primeiro elemento será armazenado no banco e o DISPLAY garante que seja visivel ao user-->
+            </td>
+            <td>
+                {{ order.created|date:"d/m/Y" }}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% pagination request paginator page_obj %} <!--vaviaveis que ja estão definidas no contexto do priprio pagination.py-->
+{% endblock %}

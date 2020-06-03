@@ -19,7 +19,7 @@ from django.conf import settings
 from django.contrib.auth.views import login, logout #ele pega as views do django de login e logout
 
 from core import views
-from catalog import views as views_catalog
+#from catalog import views as views_catalog
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^catalogo/', include('catalog.urls', namespace='catalog')), #ele indica aonde estão definidas as urls, o namespace meio q define um pefixo do template
     url(r'^conta/', include('accounts.urls', namespace='accounts')), #tudo que começar com conta quem vai definir a URL é as urls do accounts
     url(r'^compras/', include('checkout.urls', namespace='checkout')),
+    url(r'^paypal/', include('paypal.standard.ipn.urls')),
     url(r'^admin/', admin.site.urls),
 ]
 

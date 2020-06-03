@@ -38,14 +38,14 @@
 			</li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
+              <li><a href="{% url 'checkout:cart_item' %}">Carrinho</a></li>
             {% if user.is_authenticated %} <!-- dessa maneira se o user estiver logado ele retorna true senao false-->
-            <!--<li><a href="% url 'accounts:index' %">Conta</a></li>-->
+            <li><a href="{% url 'accounts:index' %}">Conta</a></li>
 			      <li><a href="{% url 'logout' %}">Sair</a></li>
 			      {% else %}
             <li><a href="{% url 'login' %}">Entrar</a></li>
             <li><a href="{% url 'accounts:register' %}">Registro</a></li> <!-- primeiro o nome do namespace depois a url-->
-            {% endif %}
-            <li><a href="{% url 'checkout:cart_item' %}">Carrinho</a></li>
+            {% endif %}            
           </ul>
         </div>
       </div>
@@ -75,5 +75,6 @@
 	</div>
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="{% static 'assets/bootstrap.min.js' %}" ></script>
+    {% block scripts %}{% endblock %}
 </body>
 </html>
