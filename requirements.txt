@@ -1,6 +1,6 @@
 #dj-database-url==0.4.1 #permite que você utilize a variável de ambiente
 Django==1.10
-gunicorn==19.4.5
+gunicorn==19.5.0
 psycopg2==2.8.5
 #model-mommy==1.2.6 #serve para acessorios de teste
 whitenoise==3.2 #WhiteNoise permite que seu aplicativo da Web sirva seus próprios arquivos estáticos, tornando-o uma unidade independente que pode ser implantada em qualquer lugar sem depender de qualquer outro serviço externo. (Especialmente útil no Heroku)
