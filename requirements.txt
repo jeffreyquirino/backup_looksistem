@@ -1,5 +1,5 @@
 #dj-database-url==0.4.1 #permite que você utilize a variável de ambiente
-Django==1.10
+Django==1.11.28
 gunicorn==19.4.5
 psycopg2==2.8.5
 #model-mommy==1.2.6 #serve para acessorios de teste
