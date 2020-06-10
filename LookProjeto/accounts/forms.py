@@ -1,5 +1,5 @@
 
-from django.contrib.auth.forms import UserCreationForm #formulario usado para add usuario
+from django.contrib.auth.forms import UserCreationForm #formulario usado para add usuario no admin
 from django import forms
 
 from .models import User
