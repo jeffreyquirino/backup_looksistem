@@ -6,4 +6,4 @@ psycopg2==2.8.5
 whitenoise==3.2 #WhiteNoise permite que seu aplicativo da Web sirva seus próprios arquivos estáticos, tornando-o uma unidade independente que pode ser implantada em qualquer lugar sem depender de qualquer outro serviço externo. (Especialmente útil no Heroku)
 django-widget-tweaks==1.4.1 #Utilizado para relizar mudanças dos atributos no proprio template
 django-paypal==0.3.3 #api paypal
-pagseguro==0.3.2 #api pagseguro
+pagseguro==0.3.2 #api do pagseguro

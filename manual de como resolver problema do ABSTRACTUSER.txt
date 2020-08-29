@@ -1,0 +1,19 @@
+Como arrumar o erro do not set defining 'AbstractBaseUser'
+
+1 - Vá para dentro da virtualenv e acesse:
+	Lib/site-packages/django/db/models/base.py
+
+2 - dentro do base.py vá para a linha 93.
+
+3 - na linha 93 substitua o conteudo desta linha
+por esse cod:
+
+ new_attrs = {'__module__': module}
+        classcell = attrs.pop('__classcell__', None)
+        if classcell is not None:
+            new_attrs['__classcell__'] = classcell
+        new_class = super_new(cls, name, bases, new_attrs)
+
+4 - salve e rode seu programa ou migrate.
+
+LEMBRANDO QUE ESSA RESOLUÇÃO FOI TESTADA NO DJANGO 1.10
